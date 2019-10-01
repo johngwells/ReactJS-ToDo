@@ -4,12 +4,13 @@
 */
 import React from 'react';
 
-import Todo from './Todo';
-
 const TodoList = props => {
   return (
-    <div>      
-      <Todo />
+    <div 
+      onClick={() => props.completedItem(props.item)}>
+      {props.todos.map((todo, index) => (
+        <li key={index}>{todo.name}</li>
+      ))}
     </div>
   );
 }
