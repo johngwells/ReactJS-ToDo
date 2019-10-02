@@ -15,7 +15,8 @@ class App extends React.Component {
     }
   }
 
-  completedItem = id => {
+  toggleItem = id => {
+    console.log(id);
     this.setState({
       todos: this.state.todos.map(item => {
         if (item.id === id) {
@@ -27,20 +28,20 @@ class App extends React.Component {
           return item;
         }
       })
-    })
+    });
   }
 
   addItem = (itemName) => {
     // add item to list
-    const newItem = {
+    const newTodo = {
       name: itemName,
       id: Date.now(),
       completed: false
     };
     this.setState({
-      todos: [...this.state.todos, newItem]
+      todos: [...this.state.todos, newTodo]
       
-    }, () => console.log(newItem))
+    }, () => console.log(newTodo))
   }
 
   clearItem = () => {
@@ -58,7 +59,7 @@ class App extends React.Component {
         />
         <TodoList 
           todos={this.state.todos}
-          completedItem={this.completedItem}
+          toggleItem={this.toggleItem}
         />
       </div>
     );
